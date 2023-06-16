@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Item
 # Create your views here.
 
 # what content the user is going to view
@@ -8,7 +9,8 @@ from django.http import HttpResponse
 # we need to link a particular view to a particular url
 
 def index(request):
-    return HttpResponse('<h1>Hello world</h1>')
+    item_list = Item.objects.all()
+    return HttpResponse(item_list)
 
 def item(request):
     return HttpResponse('This is an item view')
